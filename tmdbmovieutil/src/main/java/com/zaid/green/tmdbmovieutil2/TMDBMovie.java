@@ -238,5 +238,5 @@ public class TMDBMovie implements Serializable {
         m.actorJsonArrStr = c.getString(c.getColumnIndex(Properties.actorJsonArrStr));
         return m;
     }
-
+//
 }
