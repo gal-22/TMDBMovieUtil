@@ -12,9 +12,9 @@ import java.util.ArrayList;
 
 public class TMDBApi {
 
-    private boolean isLoading;
-    private String movieId = "";
-    private String apiKey;
+    public boolean isLoading;
+    public String movieId = "";
+    public String apiKey;
 
     public ArrayList<TMDBMovie> movies;
 
@@ -53,7 +53,7 @@ public class TMDBApi {
     }
 
 
-    private void getMovieDataRequestFull(String movieId, Context context) {
+    public void getMovieDataRequestFull(String movieId, Context context) {
         Ion.with(context)
                 .load("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + apiKey + "&append_to_response=credits")
                 .asJsonObject()
@@ -82,7 +82,7 @@ public class TMDBApi {
                 });
     }
 
-    private ArrayList<TMDBActor> createActorArr(JsonArray actorJsonArr) {
+    public ArrayList<TMDBActor> createActorArr(JsonArray actorJsonArr) {
         ArrayList<TMDBActor> actorArrayList = new ArrayList<>();
         for (int i = 0; i < actorJsonArr.size(); i++) {
             actorArrayList.add(TMDBActor.createActorFromJson(actorJsonArr.get(i).getAsJsonObject()));
@@ -90,7 +90,7 @@ public class TMDBApi {
         return actorArrayList;
     }
 
-    private void renderResult(JsonObject movieData, String logoPath, ArrayList<TMDBActor> actorArrayList, JsonArray actorJsonArr) {
+    public void renderResult(JsonObject movieData, String logoPath, ArrayList<TMDBActor> actorArrayList, JsonArray actorJsonArr) {
         TMDBMovie movie;
         movie = TMDBMovie.fromJson(movieData, logoPath); // has been done just to check if the movie exists and has a name
         if (!movie.getMovieName().equals("") || movie.getMovieName() != null) {
@@ -104,6 +104,5 @@ public class TMDBApi {
     public ArrayList<TMDBMovie> getSavedMovies() {
         return movies;
     }
-
 
 }
