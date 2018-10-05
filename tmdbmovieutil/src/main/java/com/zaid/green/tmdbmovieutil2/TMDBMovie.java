@@ -70,6 +70,9 @@ public class TMDBMovie implements Serializable {
 
     }
 
+    public void setActorArrayList(ArrayList<TMDBActor> actorArrayList) {
+        this.TMDBActorArrayList = actorArrayList;
+    }
     public String getMovieUrl() {
         return movieUrl;
     }
@@ -238,5 +241,5 @@ public class TMDBMovie implements Serializable {
         m.actorJsonArrStr = c.getString(c.getColumnIndex(Properties.actorJsonArrStr));
         return m;
     }
-//
+
 }
